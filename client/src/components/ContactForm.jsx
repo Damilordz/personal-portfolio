@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { motion, useInView } from "framer-motion";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://personal-portfolio-server-api.vercel.app";
 
 const ContactForm = () => {
   const [name, setName] = useState("");

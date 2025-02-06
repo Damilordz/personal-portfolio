@@ -27,7 +27,7 @@ const NavBar = () => {
         {/* Profile Image */}
         <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-8 border-[#2c2f3f]">
           <img
-            src="./assets/images/personal-img.jpg"
+            src="./assets/images/personal-img.png"
             alt="personal image"
             className="w-full h-full rounded-full"
           />

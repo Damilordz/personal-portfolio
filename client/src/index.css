@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .bg-hero {
-  background-image: url("/assets/images/hero-img.jpg");
+  background-image: url("/assets/images/hero-img.png");
   background-size: cover;
   background-position: center;
 }

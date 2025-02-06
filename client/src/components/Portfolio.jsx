@@ -41,6 +41,7 @@ const Portfolio = () => {
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full"
+                    loading="lazy"
                   />
                 </div>
 

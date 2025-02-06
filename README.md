@@ -31,26 +31,27 @@ Make sure you have **Node.js** and **Git** installed.
 ### Clone the Repository
 ```sh
 git clone https://github.com/Damilordz/personal-portfolio.git
-cd portfolio
+cd personal-portfolio
 ```
 
 ### Install Dependencies
 #### Frontend
 ```sh
-cd frontend
+cd client
 npm install
 ```
 
 #### Backend
 ```sh
-cd backend
+cd server
 npm install
 ```
 
 ## Environment Variables
 Create a `.env` file in the backend directory and configure:
 ```env
-VITE_BACKEND_URL=http://localhost:3000
+PORT=3000
+FRONTEND_URL=http://localhost:5173
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_email_password
 ```
@@ -58,13 +59,13 @@ EMAIL_PASSWORD=your_email_password
 ## Running the Application
 #### Start Backend Server
 ```sh
-cd backend
+cd server
 npm start
 ```
 
 #### Start Frontend React App
 ```sh
-cd frontend
+cd client
 npm run dev
 ```
 

@@ -50,7 +50,7 @@ const About = () => {
             className="min-w-[300px] max-w-[33%] max-h-[300px] border-8 border-[#e0dbdb]"
           >
             <img
-              src="./assets/images/personal-img.jpg"
+              src="./assets/images/personal-img.png"
               alt="Personal image"
               className="h-full w-full"
             />
