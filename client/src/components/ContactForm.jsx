@@ -46,7 +46,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="px-[40px]">
+    <section id="contact" className="px-[20px] lg:px-[40px]">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
@@ -67,7 +67,7 @@ const ContactForm = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           id="contactForm"
-          className="w-[80%] mx-auto border border-gray-200 shadow-lg rounded-lg p-6 grid grid-cols-2 gap-6"
+          className="w-full lg:w-[80%] mx-auto border border-gray-200 shadow-lg rounded-lg p-6 grid lg:grid-cols-2 gap-6"
           onSubmit={handleSubmit}
         >
           {/* Name Input */}
@@ -119,7 +119,7 @@ const ContactForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="form-subject col-span-2 flex flex-col gap-3"
+            className="form-subject lg:col-span-2 flex flex-col gap-3"
           >
             <label htmlFor="subject" className="form-label">
               Subject
@@ -140,7 +140,7 @@ const ContactForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="form-text-area col-span-2 flex flex-col gap-3"
+            className="form-text-area lg:col-span-2 flex flex-col gap-3"
           >
             <label htmlFor="message" className="form-label">
               Message
@@ -162,7 +162,7 @@ const ContactForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="form-btn col-span-2 flex justify-center"
+            className="form-btn lg:col-span-2 flex justify-center"
           >
             <motion.button
               whileHover={{ scale: 1.1 }}

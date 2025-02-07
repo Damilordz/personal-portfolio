@@ -1,10 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
 const firstList = [
   { label: "Birthday", value: "December 31st" },
   { label: "Degree", value: "MSc Mechatronics" },
-  { label: "Phone", value: "+447361103546" },
+  { label: "Phone", value: "+447361109278" },
   { label: "Location", value: "England, UK" },
 ];
 
@@ -15,12 +16,34 @@ const secondList = [
   { label: "Work", value: "Full Stack Web Developer" },
 ];
 
+const ListItem = ({ label, value, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: true, margin: "-100px" });
+
+  return (
+    <motion.li
+      ref={ref}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -10 : 10 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <i className="fa-solid fa-chevron-right"></i>
+      <strong>{label}: </strong>
+      <span>{value}</span>
+    </motion.li>
+  );
+};
+
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, margin: "-100px" });
 
   return (
-    <section ref={ref} id="about" className="flex justify-center px-[40px]">
+    <section
+      ref={ref}
+      id="about"
+      className="flex justify-center px-[20px] lg:px-[40px]"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -42,12 +65,12 @@ const About = () => {
             seeking to push the boundaries of what I can create.
           </p>
         </motion.div>
-        <div className="flex gap-6">
+        <div className="flex flex-col lg:flex-col gap-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.3 }}
-            className="min-w-[300px] max-w-[33%] max-h-[300px] border-8 border-[#e0dbdb]"
+            className="min-w-[300px] max-w-[33%] max-h-[300px] border-8 border-[#e0dbdb] self-center lg:self-start"
           >
             <img
               src="./assets/images/personal-img.png"
@@ -59,9 +82,9 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.5 }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-2 md:gap-4"
           >
-            <h3 className="font-[700] text-[26px] text-[#173b6c]">
+            <h3 className="font-[700] text-[5vw] lg:text-[26px] text-[#173b6c]">
               Full Stack Web Developer
             </h3>
             <p>
@@ -72,7 +95,7 @@ const About = () => {
               expertise and problem-solving skills to contribute to a dynamic
               and collaborative team in a fast-paced environment.
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-4 mt-2 lg:mt-0 lg:gap-6">
               {/* First List */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -81,16 +104,12 @@ const About = () => {
               >
                 <ul className="flex flex-col gap-4">
                   {firstList.map((item, index) => (
-                    <motion.li
+                    <ListItem
                       key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    >
-                      <i className="fa-solid fa-chevron-right"></i>
-                      <strong>{item.label}: </strong>
-                      <span>{item.value}</span>
-                    </motion.li>
+                      label={item.label}
+                      value={item.value}
+                      index={index}
+                    />
                   ))}
                 </ul>
               </motion.div>
@@ -103,16 +122,12 @@ const About = () => {
               >
                 <ul className="flex flex-col gap-4">
                   {secondList.map((item, index) => (
-                    <motion.li
+                    <ListItem
                       key={index}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                    >
-                      <i className="fa-solid fa-chevron-right"></i>
-                      <strong>{item.label}: </strong>
-                      <span>{item.value}</span>
-                    </motion.li>
+                      label={item.label}
+                      value={item.value}
+                      index={index}
+                    />
                   ))}
                 </ul>
               </motion.div>
@@ -122,6 +137,11 @@ const About = () => {
       </motion.div>
     </section>
   );
+};
+ListItem.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default About;

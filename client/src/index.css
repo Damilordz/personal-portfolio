@@ -37,7 +37,7 @@ ul {
 }
 
 .section-title h2 {
-  font-size: 32px;
+  font-size: 6vw;
   font-weight: bold;
   margin-bottom: 20px;
   color: #173b6c;
@@ -55,4 +55,10 @@ ul {
 .fa-chevron-right {
   color: #149ddd;
   margin-right: 16px;
+}
+
+@media (width > 1024px) {
+  .section-title h2 {
+    font-size: 50px;
+  }
 }

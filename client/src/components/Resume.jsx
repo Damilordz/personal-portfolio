@@ -21,7 +21,7 @@ const Resume = () => {
   return (
     <div
       id="resume"
-      className="bg-[#f5f8fd] py-16 text-center flex gap-6 justify-center items-center"
+      className="bg-[#f5f8fd] py-16 text-center flex flex-col md:flex-row gap-4 lg:gap-6 justify-center items-center"
     >
       {items.map((item, index) => (
         <button
@@ -46,7 +46,7 @@ const Resume = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.8)] z-100"
+            className="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.8)] z-100 p-[20px]"
             onClick={() => setShowModal(false)}
           >
             <motion.div
@@ -64,7 +64,7 @@ const Resume = () => {
               </p>
 
               {/* Buttons for View and Download */}
-              <div className="flex justify-center gap-4">
+              <div className="flex flex-col md:flex-row justify-center gap-4">
                 <a
                   href={cvFilePath}
                   target="_blank"

@@ -1,8 +1,15 @@
+import { motion } from "framer-motion";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="p-[15px] bg-[#040b14] text-[#f4f6fd] text-[14px] z-10 fixed bottom-0 left-0 w-[300px]">
+    <motion.footer
+      initial={{ y: "100%" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 2}}
+      className="p-[15px] bg-[#040b14] text-[#f4f6fd] text-[14px] z-10 lg:fixed lg:bottom-0 lg:left-0 lg:w-[300px]"
+    >
       <div className="text-center">
         <p className="copyright">&copy; Copyright {currentYear}</p>
         <div className="credits">
@@ -16,7 +23,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

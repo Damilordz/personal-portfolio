@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
 const texts = [
@@ -9,7 +10,7 @@ const texts = [
   "I am dedicated to delivering high-quality results.",
 ];
 
-const Hero = () => {
+const Hero = ({ handleMenuToggle, isMenuOpen }) => {
   const [textIndex, setTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
@@ -41,18 +42,34 @@ const Hero = () => {
   }, [charIndex, isDeleting, textIndex]);
 
   return (
-    <section id="hero" className="bg-hero bg-cover bg-center h-screen">
-      <div className="h-full bg-[#050d18cc] flex flex-col justify-center items-center">
+    <section id="hero" className="relative bg-hero bg-cover bg-center h-[90vh]">
+      {/* Toggle Menu */}
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="w-[40px] h-[40px] lg:hidden rounded-full flex justify-center items-center fixed top-4 right-4 z-50 text-[24px] bg-[#149ddd] cursor-pointer"
+        onClick={handleMenuToggle}
+      >
+        {
+          // Toggle menu icon
+          isMenuOpen ? (
+            <i className="fa-solid fa-xmark text-white"></i>
+          ) : (
+            <i className="fa-solid fa-bars text-white"></i>
+          )
+        }
+      </motion.div>
+      <div className="h-full bg-[#050d18cc] flex flex-col justify-center items-center text-center px-[20px]">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-[50px] font-[700] text-[#fff]"
+          className="text-[7vw] lg:text-[50px] font-[700] text-[#fff]"
         >
           Damilola Emmanuel
         </motion.h1>
         <div className="typed-text-wrap">
-          <h4 className="font-[700] text-[#fff] text-[26px]">
+          <h4 className="font-[700] text-[#fff] text-[4vw] lg:text-[26px]">
             Hello,{" "}
             <span className="border-b-4 border-b-[#149ddd]">{displayText}</span>
             <span className="animate-pulse">|</span>
@@ -61,6 +78,10 @@ const Hero = () => {
       </div>
     </section>
   );
+};
+Hero.propTypes = {
+  handleMenuToggle: PropTypes.func.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
 };
 
 export default Hero;

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import PropTypes from "prop-types";
 import { motion, useInView } from "framer-motion";
 
 const skills = [
@@ -48,37 +49,51 @@ const skills = [
   },
 ];
 
-const Skills = () => {
+// SkillItem Component for individual skill
+const SkillItem = ({ skill, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="skills px-[40px]" id="skills">
-      <div className="skills-container">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="w-full md:max-w-[150px] md:w-full h-[150px] overflow-hidden p-[20px] shadow-lg rounded-lg flex gap-2 flex-col justify-center items-center border border-gray-200"
+    >
+      <div className="px-[10px] h-[80px]">
+        <img src={skill.img} alt={skill.name} className="h-full" />
+      </div>
+      <h3 className="font-bold">{skill.name}</h3>
+    </motion.div>
+  );
+};
+
+const Skills = () => {
+  return (
+    <section className="skills px-[20px] lg:px-[40px]" id="skills">
+      <div className="skills-container ">
         <div className="section-title">
           <h2>Skills</h2>
         </div>
 
-        <div className="flex gap-[20px] flex-wrap">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
           {skills.map((skill, index) => (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="w-[150px] h-[150px] overflow-hidden p-[20px] shadow-lg rounded-lg flex gap-2 flex-col justify-center items-center border border-gray-200"
-              key={index}
-            >
-              <div className="px-[10px] h-[80px]">
-                <img src={skill.img} alt={skill.name} className="h-full" />
-              </div>
-
-              <h3 className="font-bold">{skill.name}</h3>
-            </motion.div>
+            <SkillItem key={index} skill={skill} index={index} />
           ))}
         </div>
       </div>
     </section>
   );
+};
+
+SkillItem.propTypes = {
+  skill: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Skills;
