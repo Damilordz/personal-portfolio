@@ -12,46 +12,64 @@ import BackToTop from "./components/BackToTop";
 
 function App() {
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 1024);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
+  // Check if window width is less than 1280px
   useEffect(() => {
+    let resizeTimeout;
+
     const handleResize = () => {
-      setIsMenuOpen(window.innerWidth > 1024);
+      setIsMobile(window.innerWidth < 1280);
     };
 
-    window.addEventListener("resize", handleResize);
+    const debounceResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 200);
+    };
 
     // Cleanup the event listener when component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    window.addEventListener("resize", debounceResize);
+    return () => window.removeEventListener("resize", debounceResize);
   }, []);
 
+  // Disable body scroll when menu is open on mobile
   useEffect(() => {
-    if (window.innerWidth < 1024) {
+    if (isMobile) {
+      document.documentElement.style.overflow = isMenuOpen ? "hidden" : "auto";
       document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
     }
-  }, [isMenuOpen]);
 
+    return () => {
+      document.documentElement.style.overflow = "auto"; // Cleanup
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen, isMobile]);
+
+  // Toggle menu
   const handleMenuToggle = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <>
+    <div className="relative">
       <ToastContainer />
-      <NavBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <NavBar
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        isMobile={isMobile}
+      />
       <Hero handleMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />
-      <main className="lg:ml-[300px] mb-24 flex flex-col gap-16 lg:gap-20 py-8">
+      <main className="xl:ml-[300px] mb-24 flex flex-col gap-16 lg:gap-20 py-8">
         <About />
         <Resume />
         <Skills />
-        <Portfolio />
+        <Portfolio isMobile={isMobile} isMenuOpen={isMenuOpen} />
         <ContactForm />
       </main>
       {!isMenuOpen && <BackToTop />}
       <Footer />
-    </>
+    </div>
   );
 }
 

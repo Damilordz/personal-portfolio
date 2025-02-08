@@ -28,6 +28,14 @@ const skills = [
     img: "./assets/images/skills/mongodb-logo.jpg",
   },
   {
+    name: "PostgreSQL",
+    img: "./assets/images/skills/postgresql-logo.jpeg",
+  },
+  {
+    name: "Tailwind CSS",
+    img: "./assets/images/skills/TailwindCSS-logo.jpeg",
+  },
+  {
     name: "Bootstrap",
     img: "./assets/images/skills/Bootstrap.jpg",
   },
@@ -42,10 +50,6 @@ const skills = [
   {
     name: "GitHub",
     img: "./assets/images/skills/githib-logo.jpg",
-  },
-  {
-    name: "PostgreSQL",
-    img: "./assets/images/skills/postgresql-logo.jpeg",
   },
 ];
 

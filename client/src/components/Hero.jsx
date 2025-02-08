@@ -42,12 +42,12 @@ const Hero = ({ handleMenuToggle, isMenuOpen }) => {
   }, [charIndex, isDeleting, textIndex]);
 
   return (
-    <section id="hero" className="relative bg-hero bg-cover bg-center h-[90vh]">
+    <section id="hero" className="relative bg-hero bg-cover bg-center h-[90vh] ml-0 xl:ml-[300px]">
       {/* Toggle Menu */}
       <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-[40px] h-[40px] lg:hidden rounded-full flex justify-center items-center fixed top-4 right-4 z-50 text-[24px] bg-[#149ddd] cursor-pointer"
+        className="w-[40px] h-[40px] xl:hidden rounded-full flex justify-center items-center fixed top-4 right-4 z-50 text-[24px] bg-[#149ddd] cursor-pointer"
         onClick={handleMenuToggle}
       >
         {
@@ -59,17 +59,17 @@ const Hero = ({ handleMenuToggle, isMenuOpen }) => {
           )
         }
       </motion.div>
-      <div className="h-full bg-[#050d18cc] flex flex-col justify-center items-center text-center px-[20px]">
+      <div className="h-full bg-[#050d18cc] flex flex-col justify-center items-center text-center px-[20px] sm:px-8">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-[7vw] lg:text-[50px] font-[700] text-[#fff]"
+          className="text-[7vw] sm:text-[5vw] lg:text-[50px] font-[700] text-[#fff]"
         >
           Damilola Emmanuel
         </motion.h1>
         <div className="typed-text-wrap">
-          <h4 className="font-[700] text-[#fff] text-[4vw] lg:text-[26px]">
+          <h4 className="font-[700] text-[#fff] text-[4vw] sm:text-[3vw] lg:text-[26px]">
             Hello,{" "}
             <span className="border-b-4 border-b-[#149ddd]">{displayText}</span>
             <span className="animate-pulse">|</span>

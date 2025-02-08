@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const firstList = [
   { label: "Birthday", value: "December 31st" },
   { label: "Degree", value: "MSc Mechatronics" },
-  { label: "Phone", value: "+447361109278" },
   { label: "Location", value: "England, UK" },
 ];
 
@@ -13,7 +12,6 @@ const secondList = [
   { label: "Freelance", value: "Available" },
   { label: "Language", value: "English, Yoruba" },
   { label: "Email", value: "adebowaledami97@gmail.com" },
-  { label: "Work", value: "Full Stack Web Developer" },
 ];
 
 const ListItem = ({ label, value, index }) => {
@@ -65,12 +63,12 @@ const About = () => {
             seeking to push the boundaries of what I can create.
           </p>
         </motion.div>
-        <div className="flex flex-col lg:flex-col gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.3 }}
-            className="min-w-[300px] max-w-[33%] max-h-[300px] border-8 border-[#e0dbdb] self-center lg:self-start"
+            className="min-w-[300px] max-w-[300px] max-h-[300px] border-8 border-[#e0dbdb] self-center lg:self-start"
           >
             <img
               src="./assets/images/personal-img.png"
@@ -84,7 +82,7 @@ const About = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="flex flex-col gap-2 md:gap-4"
           >
-            <h3 className="font-[700] text-[5vw] lg:text-[26px] text-[#173b6c]">
+            <h3 className="font-[700] text-[5vw] sm:text-[3.5vw] lg:text-[26px] text-[#173b6c]">
               Full Stack Web Developer
             </h3>
             <p>
