@@ -65,7 +65,7 @@ const PortfolioItem = ({ item, index, isMobile, isMenuOpen }) => {
               exit={{
                 opacity: 0,
                 scale: [0.8, 0.6, 0.4, 0.2, 0],
-                rotate: 90,
+                // rotate: 90,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="absolute inset-0 bg-[rgba(0,0,0,0.7)] text-white text-center py-2 z-10 flex justify-center items-center gap-4 rounded-b-lg"

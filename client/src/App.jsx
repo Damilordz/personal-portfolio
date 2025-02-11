@@ -35,15 +35,13 @@ function App() {
 
   // Disable body scroll when menu is open on mobile
   useEffect(() => {
-    if (isMobile) {
-      document.documentElement.style.overflow = isMenuOpen ? "hidden" : "auto";
-      document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-    }
-
-    return () => {
-      document.documentElement.style.overflow = "auto"; // Cleanup
+    if (isMobile && isMenuOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
       document.body.style.overflow = "auto";
-    };
+    }
   }, [isMenuOpen, isMobile]);
 
   // Toggle menu
